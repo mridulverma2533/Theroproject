@@ -3,12 +3,13 @@ const auth = require("../middleware/auth").authCustomer
 
 
 const controller = require("../controller/therocontroller")
+const {validateSinginRequest,validatesaveuser,isRequestValidated}=require("../validators/therovalidation")
 
 
 
-router.post("/loginuser",controller.signup)
+router.post("/loginuser",validateSinginRequest,isRequestValidated,controller.signup)
 
-router.post("/saveuser" ,auth,controller.saveuser)
+router.post("/saveuser" ,auth,validatesaveuser,isRequestValidated,controller.saveuser)
 router.get("/getuser",auth,controller.getuser)
 router.get("/getgamestate",auth,controller.getgamestate)
 
