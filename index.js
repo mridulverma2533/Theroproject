@@ -3,6 +3,8 @@ const express = require("express")
 
 const app = express();
 const cors = require("cors")
+const solc = require('solc');
+const fs = require('fs');
 
 require("./db")
 const bp = require("body-parser")
@@ -15,6 +17,8 @@ const port = process.env.PORT || 8000;
 
 app.use(express.json());
 const userroutes = require("./routes/theroroutes");
+
+
 
 app.use(cors())
 

@@ -4,6 +4,7 @@ const saveuser = require("../models/usermodel")
 const game = require("../models/gamestatemodel")
 const websocket = require("ws");
 const data = require("../helper/helper")
+const conc = require("../contract")
 
 
 
@@ -114,6 +115,17 @@ exports.getgamestate = async (req,res)=>{
     }catch(e){
         console.log(e);
         res.status(500).json(e)
+    }
+},
+exports.send =async (req,res)=>{
+    try{
+        const {token} = req.body
+        const data = await conc.contract.methods.ConvertFromInGameToken2THRAndTransfer(token).call()
+        res.send(data)
+
+    }catch(e){
+        console.log(e);
+        res.send(e)
     }
 }
 

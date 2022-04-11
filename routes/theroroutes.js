@@ -12,6 +12,7 @@ router.post("/loginuser",validateSinginRequest,isRequestValidated,controller.sig
 router.post("/saveuser" ,auth,validatesaveuser,isRequestValidated,controller.saveuser)
 router.get("/getuser",auth,controller.getuser)
 router.get("/getgamestate",auth,controller.getgamestate)
+router.get("/claimtokens",auth,controller.send)
 
 
 
